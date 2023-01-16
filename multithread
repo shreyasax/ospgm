@@ -1,0 +1,23 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<pthread.h>
+void* workerThreadfunc(void * tid)
+{
+long myid = (long)tid;
+printf("\nMy thread name is : %ld",myid);
+}
+int main()
+{
+pthread_t tid0;
+pthread_t tid1;
+pthread_t tid2;
+pthread_t tid3;
+pthread_t *thrd[] = {&tid0,&tid1,&tid2,&tid3};
+for(int i=0;i<=3;i++)
+{
+pthread_create(thrd[i],NULL,workerThreadfunc,(void *)&thrd[i]);
+}
+pthread_exit(NULL);
+return 0;
+}
