@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<sys/types.h>
+#include<unistd.h>
+void main()
+{
+int pid;
+pid=fork();
+if(!pid)
+{
+printf("Child process..");
+printf("\n\n Child PID: %d",getpid());
+printf("\n Parent PID: %d",getppid());
+printf("\n\n Finished with child");
+}
+else
+{
+printf("\nParent process");
+printf("\nParent PID: %d",getpid());
+printf("\nChild Pid:%d",pid);
+}
+}
